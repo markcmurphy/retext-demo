@@ -1,0 +1,17 @@
+  
+name: retext
+on: [pull_request]
+jobs:
+  markdownlint:
+    name: runner / retext
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: quality-docs-github-check
+        uses: markcmurphy/retext-goog-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          filter_mode: added
+          markdownlint_flags: '--config ".markdownlint.jsonc" -r "./linting-rules/*.js"'
