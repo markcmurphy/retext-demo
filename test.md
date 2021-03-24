@@ -1,43 +1,4 @@
-# Docs Draft
-
-# The B2B Edition of BigCommerce
-
-BundleB2B (B3) adds business-to-business (B2B) functionality to the BigCommerce platform, allowing businesses to easily facilitate B2B operations online. B3 provides a comprehensive suite of key B2B features to improve the B2B self-service experience for BigCommerce store owners and their customers.
-
-The B2B Edition of BigCommerce is a bundled offering of the BigCommerce Enterprise solution, B3, and six BigCommerce themes with B3 preinstalled. 
-
-Some of the enhancements to your BigCommerce store that B3 offers include:
-
-- Corporate account management
-- Sales representative masquerade
-- Shared shopping lists
-- Payment method visibility control
-- Company address book management
-- Sales representative quoting
-- Buy again
-- Trade professional application
-
-## B3 integration with BigCommerce
-
-B3 is preinstalled if you purchase the B2B Edition of BigCommerce. If B3 is purchased as a separate product for an existing BigCommerce plan, the B3 app is installed from the BigCommerce App Marketplace and must be manually integrated with your BigCommerce theme. 
-
-The B3 admin panel is seamlessly loaded as an iFrame accessible from the My Apps section of your Store Dashboard. The client-facing portions of the app are loaded dynamically with JavaScript. 
-
-# Customizing B3
-
-With B3, you can customize the placement of B3 app elements, customize display text, customize styling, and customize checkout configurations. You also have access to the lifecycle hooks for many B3 modules to inject your own JavaScript functions.
-
-Additionally, you can use the B3 REST API to create, read, update, and delete items such as orders, companies, addresses, payments, sales reps, and users. This API allows you to build your own services or integrate B3 with third-party business tools such as Salesforce.
-
-## Prerequisites for customizing B3
-
-- [Stencil CLI](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil)
-- [Node.js 12 and npm](https://nodejs.org/en/download/releases/)
-- [Stencil API token](https://support.bigcommerce.com/s/article/Store-API-Accounts#creating) to push BigCommerce theme via Stencil CLI
-- A code editor
-- Access to your BigCommerce Store Dashboard with Store Owner permissions
-
-## Customize page containers
+# Customize page containers
 
 B3 renders client-facing pages and elements by mounting fixed containers to your BigCommerce theme using JavaScript. You can change the placement of select B3 elements by using `window.b3themeConfig.useContainers = {}` to specify which DOM node B3 mounts the container on.
 
