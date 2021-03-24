@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: quality-docs-github-check
-        uses: markcmurphy/retext-goog-action@master
+        uses: markcmurphy/retext-goog-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
