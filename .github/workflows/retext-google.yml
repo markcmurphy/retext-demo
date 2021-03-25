@@ -3,7 +3,7 @@ name: retext
 on: [pull_request]
 jobs:
   markdownlint:
-    name: runner / retext
+    name: runner / remark
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,4 +13,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           level: warning
-          filter_mode: nofilter
+          filter_mode: added
