@@ -67,6 +67,9 @@ window.b3themeConfig.useText = {
 }
 ```
 
+blacklist
+garbageman
+
 For B3 element names and default text values, see the [BundleB2B Developer Guide](https://developer.bundleb2b.net/storefront/text.html).
 
 # Overwriting and injecting JavaScript
