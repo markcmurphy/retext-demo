@@ -1,8 +1,7 @@
-  
-name: retext
+name: remark
 on: [pull_request]
 jobs:
-  markdownlint:
+  remark:
     name: runner / remark
     runs-on: ubuntu-latest
     steps:
