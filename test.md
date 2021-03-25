@@ -39,7 +39,19 @@ window.b3themeConfig.useStyles = {
 ```
 
 For diagrams of B3 element names and their placements, see the [BundleB2B Developer Guide](https://developer.bundleb2b.net/storefront/containers.html).
+## Customize display text
 
+B3 allows you to customize display text for many of the application's elements, such as buttons, headers, and labels. 
+
+To overwrite the default text that B3 renders, insert `window.b3themeConfig.useText = {}` into your theme's `assets/js/global.js` file. Within `window.b3themeConfig.useText = {}`, create a property for each element you would like to overwrite using B3 element names are used as keys and strings containing the new display text as values. 
+
+When done, the object will resemble the following:## Customize display text
+
+B3 allows you to customize display text for many of the application's elements, such as buttons, headers, and labels. 
+
+To overwrite the default text that B3 renders, insert `window.b3themeConfig.useText = {}` into your theme's `assets/js/global.js` file. Within `window.b3themeConfig.useText = {}`, create a property for each element you would like to overwrite using B3 element names are used as keys and strings containing the new display text as values. 
+
+When done, the object will resemble the following:
 ## Customize display text
 
 B3 allows you to customize display text for many of the application's elements, such as buttons, headers, and labels. 
@@ -54,6 +66,9 @@ window.b3themeConfig.useText = {
 	'nav.button.quickOrderPad': 'Place Quick Order',
 }
 ```
+
+blacklist
+garbageman
 
 For B3 element names and default text values, see the [BundleB2B Developer Guide](https://developer.bundleb2b.net/storefront/text.html).
 
