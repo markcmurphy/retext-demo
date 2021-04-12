@@ -43,6 +43,21 @@ Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_produc
 When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
 When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
 
+# Customizing B3
+
+With B3, you can customize the placement of B3 app elements, customize display text, customize styling, and customize checkout configurations. You also have access to the lifecycle hooks for many B3 modules to inject your own JavaScript functions.
+
+Additionally, you can use the B3 REST API to create, read, update, and delete items such as orders, companies, addresses, payments, sales reps, and users. This API allows you to build your own services or integrate B3 with third-party business tools such as Salesforce.
+
+## Prerequisites for customizing B3
+
+- [Stencil CLI](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil)
+- [Node.js 12 and npm](https://nodejs.org/en/download/releases/)
+- [Stencil API token](https://support.bigcommerce.com/s/article/Store-API-Accounts#creating) to push BigCommerce theme via Stencil CLI
+- A code editor
+- Access to your BigCommerce Store Dashboard with Store Owner permissions
+
+
 ### Channels
 
 Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
