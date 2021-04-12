@@ -13,6 +13,13 @@ BigCommerce for WordPress allows you to power content-driven WordPress storefron
 
 You can use the BigCommerce for WordPress plugin as a building block to create an ecommerce solution that’s unique to your brand. Whether you want to link multiple WordPress storefronts to a single BigCommerce store or extend the open source plugin to create custom-made solutions, BigCommerce for WordPress makes it easy to combine the power of BigCommerce with the flexible presentation of WordPress.
 
+
+
+# Customizing B3
+
+With B3, you can customize the placement of B3 app elements, customize display text, customize styling, and customize checkout configurations. You also have access to the lifecycle hooks for many B3 modules to inject your own JavaScript functions.
+
+Additionally, you can use the B3 REST API to create, read, update, and delete items such as orders, companies, addresses, payments, sales reps, and users. This API allows you to build your own services or integrate B3 with third-party business tools such as Salesforce.
 ## How It Works
 
 BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
@@ -49,11 +56,6 @@ B3 is preinstalled if you purchase the B2B Edition of BigCommerce. If B3 is purc
 
 The B3 admin panel is seamlessly loaded as an iFrame accessible from the My Apps section of your Store Dashboard. The client-facing portions of the app are loaded dynamically with JavaScript. 
 
-# Customizing B3
-
-With B3, you can customize the placement of B3 app elements, customize display text, customize styling, and customize checkout configurations. You also have access to the lifecycle hooks for many B3 modules to inject your own JavaScript functions.
-
-Additionally, you can use the B3 REST API to create, read, update, and delete items such as orders, companies, addresses, payments, sales reps, and users. This API allows you to build your own services or integrate B3 with third-party business tools such as Salesforce.
 
 ## Prerequisites for customizing B3
 
