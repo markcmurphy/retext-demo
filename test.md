@@ -38,6 +38,12 @@ Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_produc
 
 **Note**: Most templates are used for rendering content inside of the content area of your theme's template. Only a few take over the entire page template. These may need modifications to match your theme.
 
+## B3 integration with BigCommerce
+
+B3 is preinstalled if you purchase the B2B Edition of BigCommerce. If B3 is purchased as a separate product for an existing BigCommerce plan, the B3 app is installed from the BigCommerce App Marketplace and must be manually integrated with your BigCommerce theme. 
+
+The B3 admin panel is seamlessly loaded as an iFrame accessible from the My Apps section of your Store Dashboard. The client-facing portions of the app are loaded dynamically with JavaScript. 
+
 ### Shopper Experience
 
 When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
