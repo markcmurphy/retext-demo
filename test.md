@@ -17,7 +17,7 @@ You can use the BigCommerce for WordPress plugin as a building block to create a
 
 BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
 
-Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin. 
+Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin.
 
 Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
 
@@ -46,6 +46,39 @@ When a shopper proceeds to checkout, they land on the BigCommerce checkout page 
 ### Channels
 
 Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
+
+
+## Customize styles
+
+You can customize the BigCommerce styling of many B3 elements using CSS.
+
+To specify which DOM node a B3 container mounts on, insert `window.b3themeConfig.useStyles = {}` into your theme's `assets/js/global.js` file. Within `window.b3themeConfig.useStyles = {}`, create a property that uses the B3 element name as the key and one or more comma-separated CSS declarations as the value. 
+
+Since the CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax: `backgroundColor: "lightblue"`
+
+When done, the object will resemble the following:
+
+```jsx
+window.b3themeConfig.useStyles = {
+/* B3 will use the specified styles for the "Trade Partner Application" button that is appended to the secondary navigation menu */
+      'tpa.entryButton': {
+        fontFamily: 'Karla,Arial,Helvetica,sans-serif',
+        fontSize: '1rem',
+        listStyle: 'none',
+        boxSizing: 'border-box',
+        lineHeight: 'inherit',
+        transition: 'color .15s ease',
+        display: 'block',
+        color: '#333',
+        fontWeight: 700,
+        padding: '1rem .78571rem',
+        textDecoration: 'none',
+        textTransform: 'uppercase',
+      },
+    };
+```
+
+For diagrams of B3 element names and their placements, see the [BundleB2B Developer Guide](https://developer.bundleb2b.net/storefront/containers.html).
 
 ### WordPress as a Channel
 
