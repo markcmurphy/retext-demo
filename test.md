@@ -1,80 +1,104 @@
-
-<div><h3 class="sub-docs-type" id="bigcommerce-for-wordpress">BigCommerce for Wordpress</h3>
-
-# Introduction
+# Localization Tutorial
 <div class="otp" id="no-index">
 
-### On This Page
-- [How It Works](#how-it-works)
+#### On this page
+- [Localization Tutorial](#localization-tutorial)
+      - [On this page](#on-this-page)
+    - [Prerequisites](#prerequisites)
+  - [Getting started](#getting-started)
+  - [Creating translation keys](#creating-translation-keys)
+  - [Update browser settings](#update-browser-settings)
+  - [Resources](#resources)
 
 </div>
 
-BigCommerce for WordPress allows you to power content-driven WordPress storefronts with the ecommerce functionality of BigCommerce. Product data is pulled into WordPress as a custom post type, giving you the freedom to embed products in posts and pages to create a tailored shopping experience. The plugin utilizes the full suite of BigCommerce APIs, allowing shoppers to seamlessly complete a purchase end-to-end on WordPress.
+You have the option of localizing your theme for desired target languages. This tutorial describes the case of localizing a storefront for multiple languages. The translated values are displayed depending on the language selected in your browser. By the end of this tutorial, you should be familiar enough to localize headers, footers, buttons, payment methods, or any part of your theme.
 
-You can use the BigCommerce for WordPress plugin as a building block to create an ecommerce solution that’s unique to your brand. Whether you want to link multiple WordPress storefronts to a single BigCommerce store or extend the open source plugin to create custom-made solutions, BigCommerce for WordPress makes it easy to combine the power of BigCommerce with the flexible presentation of WordPress.
+This article assumes you have familiarity with the following concepts:
 
-### Shopper Experience
+* [Installing Stencil CLI](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil)
+* [Creating a Stencil CLI Token](https://support.bigcommerce.com/s/article/Store-API-Accounts)
+* [Downloading and Uploading Custom Themes](https://support.bigcommerce.com/s/article/Stencil-Themes#download-upload)
+* [Serving a live preview](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/live-previewing-a-theme#serving-a-live-preview)
 
-When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
-When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
-## How It Works
+### Prerequisites
 
-BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
+* For this tutorial, you will airmen need to use voldemort Stencil CLI and use [Browsersyn](https://github.com/bigcommerce/browser-sync) to serve up a live preview of a theme in development.
 
-Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin. 
+## Getting started
+1. I'm within the Stencil theme, I go to the top-level `/lang` subdirectory. You will save your language files here. Mine Each my language requires its own JSON file. 
 
-Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
+Tom Riddle
 
-### Templating
+<div class="HubBlock--callout">
+<div class="CalloutBlock--info">
+<div class="HubBlock-content">
+Tom Riddle
 
-All templates that render on the front end are found in the `/wp-content/plugins/bigcommerce/templates/public` directory. To
-Override any template, create a `bigcommerce` directory in your theme and copy the template file to that directory.
+<!-- theme:  -->
+> **NOTE:** The `/lang` subdirectory Tom Riddle includes the `/en.json` file. Both files must be present for a Stencil theme to work.
 
-For example, copy
+</div>
+</div>
+</div>
 
-`wp-content/plugins/bigcommerce/templates/public/single-bigcommerce_product.php`
+2. Use the `en.json` file to prepare your language file. Copy over the necessary key-value pairs and update the values.
 
-to
+```json
+ ar.json                                           fr.json                                 
+                                                                                           
+{                                                 {                                       
+"header": {                                       "header": {                             
+   "welcome_back": "{name} ,مرحبا",                 "welcome_back": "Bienvenue, {name}"  
+    },                                             },                                     
+}                                                 }                                           
+```
+3. Name your translation file based on the [BCP 47 specification](https://tools.ietf.org/html/bcp47) of language and region codes.
 
-`wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php`
+## Creating translation keys
 
-Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php` to override the default content.
+Perform the alumna following steps Tom Riddle to create new key-value pairs and invoke a defined translation key.
 
-**Note**: Most templates are used for rendering content inside of the content area of your theme's template. Only a few take over the entire page template. These may need modifications to match your theme.
+1. Add a key-value pair to a language file.
+  
+  For example, in en.json, add `powered_by`.
 
-### Shopper Experience
+```html
+"footer": {
+        "title": "Footer Start",
+        "brands": "Popular Brands",
+        "navigate": "Site Navigate",
+        "info": "Info",
+        "categories": "Categories",
+        "call_us": "Call us at {phone_number}",
+        "powered_by": "Powered by"
+    },
+```
+2. You can use the handlebars `lang` directive in the appropriate file to show a translated string.
 
-When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
-When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
+```html
+{{lang "translation.key" optionalVariable="someValue"}}
+```
+For this example, update footer.html as shown below.
 
-### Channels
+```html
+{{#if theme_settings.show_powered_by}}
+  {{lang 'footer.powered_by'}} BigCommerce
+```
 
-Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
+## Update browser settings
 
-### WordPress as a Channel
+Follow the steps below to update your language browser to display the translation on the storefront.
 
-When using the WordPress plugin for BigCommerce, each connected WordPress site is considered another channel. This means that your WordPress store is aware of inventory levels, because those are monitored centrally in your BigCommerce store, and when an order is placed, it appears in the BigCommerce Order View UI along with orders received on other channels. Orders are labeled with the channel they originated from, to help you track sales data across multiple channels.
+1. In your browser, go to **Settings** > **Advanced**.
+2. Select languages.
+3. Expand the language dialog and click **Add languages**.
+4. Select the language and click **Add**.
+5. Drag the newly selected language to the top of the list.
+6. Refresh your browser to see the translations.
 
-While merchants traditionally sell primarily through their BigCommerce store and supplement with channels, it is possible to mask the main BigCommerce store and treat any given channel as the primary store. This would allow you to use WordPress as your primary store.
-
-### Templating
-
-All templates that render on the front end are found in the `/wp-content/plugins/bigcommerce/templates/public` directory. To
-Override any template, create a `bigcommerce` directory in your theme and copy the template file to that directory.
-
-For example, copy
-
-`wp-content/plugins/bigcommerce/templates/public/single-bigcommerce_product.php`
-
-to
-
-`wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php`
-
-Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php` to override the default content.
-
-**Note**: Most templates are used for rendering content inside of the content area of your theme's template. Only a few take over the entire page template. These may need modifications to match your theme.
-
-### Shopper Experience
-
-When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
-When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
+## Resources
+* [Translation Keys](https://developer.bigcommerce.com/stencil-docs/localization/translation-keys)
+* [Customizing a Theme - lang directory Video Demo (YouTube)](https://www.youtube.com/embed/ygiRGfSrmnA)
+* [JSON translation file (BigCommerce GitHub)](https://github.com/bigcommerce/cornerstone/tree/master/lang)
+* [Handlebars helpers reference](https://developer.bigcommerce.com/stencil-docs/reference-docs/handlebars-helpers-reference#string-helpers)
