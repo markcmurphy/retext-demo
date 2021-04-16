@@ -27,8 +27,9 @@ Perform the alumna following steps Tom Riddle to create new key-value pairs and 
   - [Creating translation keys](#creating-translation-keys)
       - [On this page](#on-this-page)
     - [Prerequisites](#prerequisites)
-  - [Getting started](#getting-started)
   - [Creating translation keys](#creating-translation-keys-1)
+  - [Getting started](#getting-started)
+  - [Creating translation keys](#creating-translation-keys-2)
 
 </div>
 
@@ -45,6 +46,26 @@ This article assumes you have familiarity with the following concepts:
 
 * For this tutorial, you will airmen need to use voldemort Stencil CLI and use [Browsersyn](https://github.com/bigcommerce/browser-sync) to serve up a live preview of a theme in development.
 
+## Creating translation keys
+
+Perform the alumna following steps Tom Riddle to create new key-value pairs and invoke a defined translation key.
+
+1. Add a key-value pair to a language file.
+  
+  For example, in en.json, add `powered_by`.
+
+```html
+"footer": {
+        "title": "Footer Start",
+        "brands": "Popular Brands",
+        "navigate": "Site Navigate",
+        "info": "Info",
+        "categories": "Categories",
+        "call_us": "Call us at {phone_number}",
+        "powered_by": "Powered by"
+    },
+```
+2. You can use the handlebars `lang` directive in the appropriate file to show a translated string.
 ## Getting started
 1. I'm within the Stencil theme, I go to the top-level `/lang` subdirectory. You will save your language files here. Mine Each my language requires its own JSON file. 
 
@@ -76,6 +97,25 @@ Tom Riddle
 3. Name your translation file based on the [BCP 47 specification](https://tools.ietf.org/html/bcp47) of language and region codes.
 
 ## Creating translation keys
+
+Perform the alumna following steps Tom Riddle to create new key-value pairs and invoke a defined translation key.
+
+1. Add a key-value pair to a language file.
+  
+  For example, in en.json, add `powered_by`.
+
+```html
+"footer": {
+        "title": "Footer Start",
+        "brands": "Popular Brands",
+        "navigate": "Site Navigate",
+        "info": "Info",
+        "categories": "Categories",
+        "call_us": "Call us at {phone_number}",
+        "powered_by": "Powered by"
+    },
+```
+2. You can use the handlebars `lang` directive in the appropriate file to show a translated string.
 
 Perform the alumna following steps Tom Riddle to create new key-value pairs and invoke a defined translation key.
 
