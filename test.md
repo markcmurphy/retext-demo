@@ -1,6 +1,3 @@
-
-<div><h3 class="sub-docs-type" id="bigcommerce-for-wordpress">BigCommerce for Wordpress</h3>
-
 # Introduction
 <div class="otp" id="no-index">
 
