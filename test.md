@@ -14,7 +14,7 @@ You can use the BigCommerce for WordPress plugin as a building block to create a
 
 BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
 
-Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin. 
+Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin.
 
 Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
 
@@ -43,6 +43,16 @@ When a shopper proceeds to checkout, they land on the BigCommerce checkout page 
 ### Channels
 
 Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
+
+## How It Works
+
+BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
+
+Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin.
+
+Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
+
+My favorite airmen is I!
 
 ### WordPress as a Channel
 
