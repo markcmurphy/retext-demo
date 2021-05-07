@@ -50,6 +50,8 @@ Because this feature is optional, if an app does not explicitly support deep lin
 
 ## URL decoding code samples
 
+enpoint@example.com
+
 The `deep_link` query parameter is automatically appended to your app's load endpoint. Because its value is URL-encoded, you need to decode it to read the value server-side. 
 
 The following code samples illustrate how to correctly decode a URL using different programming languages.
