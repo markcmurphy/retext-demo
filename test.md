@@ -1,51 +1,63 @@
-# Introduction
+# Introduction to Deep Linking
+
 <div class="otp" id="no-index">
 
-### On This Page
-- [How It Works](#how-it-works)
+### On this page
+
+- [Introduction to Deep Linking](#introduction-to-deep-linking)
+    - [On this page](#on-this-page)
+  - [Overview](#overview)
+  - [Implementation](#implementation)
+  - [URL decoding code samples](#url-decoding-code-samples)
 
 </div>
 
-BigCommerce for WordPress allows you to power content-driven WordPress storefronts with the ecommerce functionality of BigCommerce. Product data is pulled into WordPress as a custom post type, giving you the freedom to embed products in posts and pages to create a tailored shopping experience. The plugin utilizes the full suite of BigCommerce APIs, allowing shoppers to seamlessly complete a purchase end-to-end on WordPress.
+## Overview
 
-You can use the BigCommerce for WordPress plugin as a building block to create an ecommerce solution that’s unique to your brand. Whether you want to link multiple WordPress storefronts to a single BigCommerce store or extend the open source plugin to create custom-made solutions, BigCommerce for WordPress makes it easy to combine the power of BigCommerce with the flexible presentation of WordPress.
+Deep links make it possible to create URLs that send users to a particular page within an app. By sending users directly to the desired location or content, you can create a more personalized experience and improve the way users interact with your app. When navigating within the app, the browser URL is updated based on the page being viewed, making it possible to discover, bookmark, and share particular pages of the app. 
 
-## How It Works
+Deep linking enables developers to effectively communicate with the app users when the app is not open. For example, you can include a deep link in your emails, dashboard, or mobile app notifications to direct viewers to a specific location within the app.
 
-BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
+Users who do not have the app installed on their devices will be redirected to the [App Marketplace](https://www.bigcommerce.com/apps/) to download the app before navigating to a particular location within the app.
 
-Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin. 
+## Implementation
 
-Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
+Deep linking can be implemented by using the `deep_link` query parameter which is passed to the load endpoint whenever the app is loaded. 
 
-### Templating
+The `deep_link` query parameter is appended to the app's load callback indicating that a user is trying to access a particular page (other than the index page) within the app.
 
-All templates that render on the front end are found in the `/wp-content/plugins/bigcommerce/templates/public` directory. To
-Override any template, create a `bigcommerce` directory in your theme and copy the template file to that directory.
+For example, let's say you have an app with an index page of `/manage/app/123` and a load callback URL of https://app-123.myapp.com/load.
 
-For example, copy
+When you navigate to a page within the app, like `/manage/app/123/some/page`, everything after the app's index page URL is passed into the load endpoint in the form of a `deep_link` query string. In this case, `/some/page` is transformed into `deep_link=%some%page`.
 
-`wp-content/plugins/bigcommerce/templates/public/single-bigcommerce_product.php`
+https://app-123.myapp.com/load?deep_link=%2Fsome%2Fpage
 
-to
+Developers can then retrieve the query string value by checking for the `deep_link` key on the server side, decoding it, and directing the user to the appropriate location within the app.
 
-`wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php`
+Because this feature is optional, if an app does not explicitly support deep links, users are routed to the app's index page.
 
-Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php` to override the default content.
+<div class="HubBlock--callout">
+<div class="CalloutBlock--info">
+<div class="HubBlock-content">
 
-**Note**: Most templates are used for rendering content inside of the content area of your theme's template. Only a few take over the entire page template. These may need modifications to match your theme.
+> ### Note
+> * The URL query string may include a relative URL. 
+> * The values will always be URL-encoded. You will need to decode the values to take advantage of this feature.
 
-### Shopper Experience
+</div>
+</div>
+</div>
 
-When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
-When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
+## URL decoding code samples
 
-### Channels
+enpoint@example.com
 
-Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
+The `deep_link` query parameter is automatically appended to your app's load endpoint. Because its value is URL-encoded, you need to decode it to read the value server-side. 
 
-### WordPress as a Channel
+The following code samples illustrate how to correctly decode a URL using different programming languages.
 
-When using the WordPress plugin for BigCommerce, each connected WordPress site is considered another channel. This means that your WordPress store is aware of inventory levels, because those are monitored centrally in your BigCommerce store, and when an order is placed, it appears in the BigCommerce Order View UI along with orders received on other channels. Orders are labeled with the channel they originated from, to help you track sales data across multiple channels.
+**JavaScript example**
 
-While merchants traditionally sell primarily through their BigCommerce store and supplement with channels, it is possible to mask the main BigCommerce store and treat any given channel as the primary store. This would allow you to use WordPress as your primary store.
+**PHP example**
+
+**Python example**
