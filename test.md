@@ -1,51 +1,53 @@
-# Introduction
+# Evaluating Color Contrast
 <div class="otp" id="no-index">
 
-### On This Page
-- [How It Works](#how-it-works)
-
+### On this page
+- [Evaluating Color Contrast](#evaluating-color-contrast)
+    - [On this page](#on-this-page)
+    - [Prerequisites](#prerequisites)
+  - [Performing a manual review](#performing-a-manual-review)
+  - [Using an automatic testing tool](#using-an-automatic-testing-tool)
+  - [Related resources](#related-resources)
+    - [Color Contrast Checkers](#color-contrast-checkers)
+    - [Resources](#resources)
 </div>
 
-BigCommerce for WordPress allows you to power content-driven WordPress storefronts with the ecommerce functionality of BigCommerce. Product data is pulled into WordPress as a custom post type, giving you the freedom to embed products in posts and pages to create a tailored shopping experience. The plugin utilizes the full suite of BigCommerce APIs, allowing shoppers to seamlessly complete a purchase end-to-end on WordPress.
+Color contrast is the difference between background and foreground content. The colors need to provide maximum contrast so anyone with a vision deficiency can successfully view page information. Color contrast is important for accessibility because it helps people with color blindness, low vision, low contrast vision, and color vision deficiency.
 
-You can use the BigCommerce for WordPress plugin as a building block to create an ecommerce solution that’s unique to your brand. Whether you want to link multiple WordPress storefronts to a single BigCommerce store or extend the open source plugin to create custom-made solutions, BigCommerce for WordPress makes it easy to combine the power of BigCommerce with the flexible presentation of WordPress.
+This tutorial will walk you through the steps of evaluating color contrast for your site. Evaluating your site should include performing a manual review and using an automatic testing tool. 
 
-## How It Works
+### Prerequisites
+You should be familiar with the [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) on contrast and color requirements.
 
-BigCommerce for WordPress connects your WordPress site to your BigCommerce store via API, and pulls all of the relevant data into a variety of database tables, some custom, some default WordPress. Products are a post type: product data is stored in the post table and product meta is stored in the post_meta table.
+## Performing a manual review
+Perform a manual review to examine the use of color on your website visually. Ensure the following:
 
-Orders data is stored on the BigCommerce servers and is accessible in your WordPress site via API with custom code and via a nice UI in the BigCommerce admin. 
+* Text and images are not difficult to read.
+* You do not use color as the only visual means of conveying information.
+* There is no color but black text on white background.
 
-Most store options and settings are managed inside the BigCommerce UI, including Shipping, Taxes, and Payment Gateways.
+## Using an automatic testing tool
 
-### Templating
+It is important to verify your findings with an automatic testing tool. There are different tools and techniques to evaluate contrast. This tutorial uses the [color contrast accessibility validator](https://color.a11y.com). A list of other color contrast checkers is in [Related resources](#related-resources). Instructions for using the color contrast accessibility validator are below.
 
-All templates that render on the front end are found in the `/wp-content/plugins/bigcommerce/templates/public` directory. To
-Override any template, create a `bigcommerce` directory in your theme and copy the template file to that directory.
+1. Go to https://color.a11y.com.
+2. Enter your webpage address and click **Check Contrast**. The tool automatically identifies the contrast ratio and compares it to the standard. 
+3. Fix any color contrast issues to satisfy your desired compliance level.
 
-For example, copy
+    - Click **Test Colors** to change a color-pair contrast.
+    - Enter a hex code or pick a color using the eyedropper tool for the background color. 
+    - Enter a hex code or pick a color using the eyedropper for the foreground color.
 
-`wp-content/plugins/bigcommerce/templates/public/single-bigcommerce_product.php`
+4. Continue testing the color contrast until it passes your desired compliance level.
 
-to
+![color-pair](https://raw.githubusercontent.com/bigcommerce/dev-docs/master/assets/images/color-contrast-01.png "color-pair")
 
-`wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php`
+## Related resources
 
-Then, edit `wp-content/themes/<theme-name>/bigcommerce/single-bigcommerce_product.php` to override the default content.
+### Color Contrast Checkers
+- [WebAIM Color Contrast Checker](https://webaim.org/articles/contrast/evaluating#contrastchecker)  
+- [Colour contrast analyser (CCA)](https://www.tpgi.com/color-contrast-checker/)
+- [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-**Note**: Most templates are used for rendering content inside of the content area of your theme's template. Only a few take over the entire page template. These may need modifications to match your theme.
-
-### Shopper Experience
-
-When a customer visits the store, the products they see are stored locally in WordPress. A cart is optional–when the customer clicks add-to-cart, they can either be directed to a cart page or delivered directly to the checkout page.
-When a shopper proceeds to checkout, they land on the BigCommerce checkout page in an embedded iframe, which can be styled to match your WordPress site. This creates a seamless experience for the shopper because they remain on your WordPress site and domain for the entire shopping experience. BigCommerce embedded checkout also allows you to leverage the built-in security and PCI-compliance of the BigCommerce checkout.
-
-### Channels
-
-Channels allow you to manage products in BigCommerce and sell them on other storefronts, like one or more WordPress sites, or in marketplaces, like Amazon and Facebook. A key concept is that the products listed on other channels are managed centrally from your BigCommerce store, so inventory is tracked neatly across all channels. This means that if all of your product ends up being sold through Amazon, your Facebook store will also be sold out.
-
-### WordPress as a Channel
-
-When using the WordPress plugin for BigCommerce, each connected WordPress site is considered another channel. This means that your WordPress store is aware of inventory levels, because those are monitored centrally in your BigCommerce store, and when an order is placed, it appears in the BigCommerce Order View UI along with orders received on other channels. Orders are labeled with the channel they originated from, to help you track sales data across multiple channels.
-
-While merchants traditionally sell primarily through their BigCommerce store and supplement with channels, it is possible to mask the main BigCommerce store and treat any given channel as the primary store. This would allow you to use WordPress as your primary store.
+### Resources
+- [The Basics and Importance of Color Contrast for Web Accessibility](https://www.boia.org/blog/the-basics-and-importance-of-color-contrast-for-web-accessibility)
